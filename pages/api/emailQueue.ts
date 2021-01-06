@@ -1,9 +1,9 @@
 import { Queue } from "quirrel/next";
 import { createTransport } from "nodemailer";
 
-const transport = createTransport(process.env.SMTP_URL);
-
 export default Queue("api/emailQueue", async (to: string) => {
+  const transport = createTransport(process.env.SMTP_URL);
+
   await transport.sendMail({
     from: "cypress-showcase@quirrel.dev",
     to,

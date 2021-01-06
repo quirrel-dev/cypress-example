@@ -1,3 +1,5 @@
+import emailQueue from "../../pages/api/emailQueue";
+
 /// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -18,4 +20,16 @@
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+
+  on("task", {
+    async getEmailQueueJob(id: string) {
+      const job = await emailQueue.getById(id);
+      return job;
+    },
+
+    async invokeEmailQueueJob(id: string) {
+      await emailQueue.invoke(id);
+      return null;
+    },
+  });
+};

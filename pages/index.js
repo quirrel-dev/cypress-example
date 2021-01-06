@@ -13,7 +13,7 @@ export default function Home() {
         onClick={async () => {
           await fetch("/api/sendEmail", {
             method: "POST",
-            body: "sandy-cheecks@quirrel.dev",
+            body: "sandy.cheeks@quirrel.dev",
           });
         }}
       >
